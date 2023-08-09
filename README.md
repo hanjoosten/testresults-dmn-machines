@@ -29,6 +29,6 @@ Voor de RVP is de functionaliteit op hoofdlijnen verdeeld in validatie en planni
 
 ## Testrapportage
 
-[Overzicht van de laatste run](target/cucumber-reports/advanced-reports/cucumber-html-reports/overview-features.html)
+[Overzicht van de laatste run](rvp/target/cucumber-reports/advanced-reports/cucumber-html-reports/overview-features.html)
 
-[Overzicht van de laatste run (alternatieve manier)](target/cucumber-reports/cucumber-html-report.html)
+[Overzicht van de laatste run (alternatieve manier)](rvp/target/cucumber-reports/cucumber-html-report.html)
