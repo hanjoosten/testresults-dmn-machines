@@ -8,22 +8,22 @@ Voor de RVP is de functionaliteit op hoofdlijnen verdeeld in validatie en planni
 
 <pre>
 Validatieschema's
-    <a href="generatedDocs/Dokumentation-validatieschemaBMR_HVP.html">BMR en HVP</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaDTP.html">DTP</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaHBIg.html">HBIg</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaHepB.html">HepB</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaHib.html">Hib</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaMEN.html">MEN</a><br>
-    <a href="generatedDocs/Dokumentation-validatieschemaPNEU.html">PNEU</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaBMR_HVP.html" target="_blank">BMR en HVP</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaDTP.html" target="_blank">DTP</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHBIg.html" target="_blank">HBIg</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHepB.html" target="_blank">HepB</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHib.html" target="_blank">Hib</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaMEN.html" target="_blank">MEN</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-validatieschemaPNEU.html" target="_blank">PNEU</a><br>
 
 Planschema's
-    <a href="generatedDocs/Dokumentation-planningBMR_HPV.html">planningBMR_HPV</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-planningBMR_HPV.html" target="_blank">planningBMR_HPV</a><br>
 
 Overig
-    <a href="generatedDocs/Dokumentation-stm_stamgegevens.html">Stamgegevens</a><br>
-    <a href="generatedDocs/Dokumentation-Valideren.html">Valideren</a><br>
-    <a href="generatedDocs/Dokumentation-vvc_ValiderenVaccinatieComponent.html">Valideren van vaccinatiecomponenten</a><br>
-    <a href="generatedDocs/Dokumentation-ValiderenVaccinaties.html">Valideren van vaccinaties</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-stm_stamgegevens.html" target="_blank">Stamgegevens</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-Valideren.html" target="_blank">Valideren</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-vvc_ValiderenVaccinatieComponent.html" target="_blank">Valideren van vaccinatiecomponenten</a><br>
+    <a href="rvp/generatedDocs/Dokumentation-ValiderenVaccinaties.html" target="_blank">Valideren van vaccinaties</a><br>
 
 
 </pre>
