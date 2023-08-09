@@ -6,27 +6,26 @@ Deze repo is bedoeld om testresultaten en documentatie die gegenereerd kan worde
 
 Voor de RVP is de functionaliteit op hoofdlijnen verdeeld in validatie en planning. De schema's hiervan zijn hieronder te vinden:
 
-<pre>
-Validatieschema's
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaBMR_HVP.html" target="_blank">BMR en HVP</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaDTP.html" target="_blank">DTP</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHBIg.html" target="_blank">HBIg</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHepB.html" target="_blank">HepB</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaHib.html" target="_blank">Hib</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaMEN.html" target="_blank">MEN</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-validatieschemaPNEU.html" target="_blank">PNEU</a><br>
+### Validatieschema's
 
-Planschema's
-    <a href="rvp/generatedDocs/Dokumentation-planningBMR_HPV.html" target="_blank">planningBMR_HPV</a><br>
+- [BMR en HVP](rvp/generatedDocs/Dokumentation-validatieschemaBMR_HVP.html)
+- [DTP](rvp/generatedDocs/Dokumentation-validatieschemaDTP.html)
+- [HBIg](rvp/generatedDocs/Dokumentation-validatieschemaHBIg.html)
+- [HepB](rvp/generatedDocs/Dokumentation-validatieschemaHepB.html)
+- [Hib](rvp/generatedDocs/Dokumentation-validatieschemaHib.html)
+- [MEN](rvp/generatedDocs/Dokumentation-validatieschemaMEN.html)
+- [PNEU](rvp/generatedDocs/Dokumentation-validatieschemaPNEU.html)
 
-Overig
-    <a href="rvp/generatedDocs/Dokumentation-stm_stamgegevens.html" target="_blank">Stamgegevens</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-Valideren.html" target="_blank">Valideren</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-vvc_ValiderenVaccinatieComponent.html" target="_blank">Valideren van vaccinatiecomponenten</a><br>
-    <a href="rvp/generatedDocs/Dokumentation-ValiderenVaccinaties.html" target="_blank">Valideren van vaccinaties</a><br>
+### Planschema's
 
+- [BMR en HPV](rvp/generatedDocs/Dokumentation-planningBMR_HPV.html)
 
-</pre>
+### Overige documentatie
+
+- [Stamgegevens](rvp/generatedDocs/Dokumentation-stm_stamgegevens.html)
+- [Valideren](rvp/generatedDocs/Dokumentation-Valideren.html)
+- [Valideren van vaccinatiecomponenten](rvp/generatedDocs/Dokumentation-vvc_ValiderenVaccinatieComponent.html)
+- [Valideren van vaccinaties](rvp/generatedDocs/Dokumentation-ValiderenVaccinaties.html)
 
 ## Testrapportage
 
