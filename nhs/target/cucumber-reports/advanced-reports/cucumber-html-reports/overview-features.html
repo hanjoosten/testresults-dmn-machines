@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 1) - Features Overview</title>
+
+
+  <script>
+$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                51126,
+                0,
+                0,
+                0,
+                0
+            ],
+            backgroundColor: [
+                "#00B000",
+                "#FF3030",
+                "#88AAFF",
+                "#F5F28F",
+                "#F5B975"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed",
+            "Skipped",
+            "Pending",
+            "Undefined"
+        ]
+    };
+
+    var context = document.getElementById("steps-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Steps"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 51126) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                4644,
+                0
+            ],
+            backgroundColor: [
+                "#00B000",
+                "#FF3030"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed"
+        ]
+    };
+
+    var context = document.getElementById("scenarios-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Scenarios"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 4644) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});$(document).ready(function() {
+
+    var chartData = {
+        datasets: [{
+            data: [
+                   39,
+                   0
+               ],
+               backgroundColor: [
+                "#00B000",
+                "#FF3030"
+            ]
+        }],
+        labels: [
+            "Passed",
+            "Failed"
+        ]
+    };
+
+    var context = document.getElementById("features-chart");
+    window.myBar = new Chart(context, {
+        type: "doughnut",
+        data: chartData,
+        options: {
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Features"
+            },
+            responsive: true,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var allData = data.datasets[tooltipItem.datasetIndex].data;
+                        var tooltipLabel = data.labels[tooltipItem.index];
+                        var tooltipData = allData[tooltipItem.index];
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 39) / 100;
+                        return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
+                    }
+                }
+            }
+        }
+    });
+
+});  </script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation"  class="active" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>NHS machine</td>
+        <td>1</td>
+      <td>18 Jan 2024, 12:01</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Features Statistics</h2>
+      <p>The following graphs show passing and failing statistics for features</p>
+  </div>
+</div>
+
+
+  <div class="container-fluid" id="charts">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div id="featureChartCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#featureChartCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="1"></li>
+            <li data-target="#featureChartCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <canvas id="features-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="scenarios-chart" height="120"></canvas>
+            </div>
+
+            <div class="item">
+              <canvas id="steps-chart" height="120"></canvas>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#featureChartCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#featureChartCarousel" role="button" data-slide="next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+
+<table id="tablesorter" class="stats-table table-hover">
+
+<thead>
+  <tr class="header dont-sort">
+      <th></th>
+    <th colspan="6">Steps</th>
+    <th colspan="3">Scenarios</th>
+    <th colspan="2">Features</th>
+  </tr>
+  <tr>
+    <th>Feature</th>
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="skipped">Skipped</th>
+    <th class="pending">Pending</th>
+    <th class="undefined">Undefined</th>
+    <th class="total">Total</th>
+
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="total">Total</th>
+
+    <th>Duration</th>
+    <th>Status</th>
+  </tr>
+</thead>
+
+
+  <tbody>
+      <tr>
+        <td class="tagname"><a href="report-feature_1266169728.html">AGS EH combi</a></td>
+
+        <td      class="passed"    >335</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">335</td>
+
+        <td  class="passed"    >25</td>
+        <td >0</td>
+        <td class="total">25</td>
+
+        <td class="duration" data-value="4892230617">4.892</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_1_1119948286.html">AGS HH/THH/his</a></td>
+
+        <td      class="passed"    >1288</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1288</td>
+
+        <td  class="passed"    >137</td>
+        <td >0</td>
+        <td class="total">137</td>
+
+        <td class="duration" data-value="8609509587">8.609</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_2_912705011.html">AGS EH/TH/his</a></td>
+
+        <td      class="passed"    >1398</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1398</td>
+
+        <td  class="passed"    >137</td>
+        <td >0</td>
+        <td class="total">137</td>
+
+        <td class="duration" data-value="8047845308">8.047</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_3_3299192076.html">ALD</a></td>
+
+        <td      class="passed"    >234</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">234</td>
+
+        <td  class="passed"    >24</td>
+        <td >0</td>
+        <td class="total">24</td>
+
+        <td class="duration" data-value="1759428149">1.759</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_4_1516560767.html">ALD</a></td>
+
+        <td      class="passed"    >1240</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1240</td>
+
+        <td  class="passed"    >128</td>
+        <td >0</td>
+        <td class="total">128</td>
+
+        <td class="duration" data-value="8491680458">8.491</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_5_862876662.html">BT relevantie bepalen</a></td>
+
+        <td      class="passed"    >320</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">320</td>
+
+        <td  class="passed"    >40</td>
+        <td >0</td>
+        <td class="total">40</td>
+
+        <td class="duration" data-value="300346190">0.300</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_6_2342761920.html">CF deel 1 EH</a></td>
+
+        <td      class="passed"    >385</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">385</td>
+
+        <td  class="passed"    >25</td>
+        <td >0</td>
+        <td class="total">25</td>
+
+        <td class="duration" data-value="3061338712">3.061</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_7_481637637.html">CF deel 1 HH</a></td>
+
+        <td      class="passed"    >636</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">636</td>
+
+        <td  class="passed"    >53</td>
+        <td >0</td>
+        <td class="total">53</td>
+
+        <td class="duration" data-value="5183890632">5.183</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_8_488248972.html">CF deel 1 EH</a></td>
+
+        <td      class="passed"    >1060</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1060</td>
+
+        <td  class="passed"    >53</td>
+        <td >0</td>
+        <td class="total">53</td>
+
+        <td class="duration" data-value="5288401277">5.288</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_9_4271046308.html">CF deel 2 HH</a></td>
+
+        <td      class="passed"    >576</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">576</td>
+
+        <td  class="passed"    >48</td>
+        <td >0</td>
+        <td class="total">48</td>
+
+        <td class="duration" data-value="4888298403">4.888</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_10_2975761805.html">CF deel 2 EH</a></td>
+
+        <td      class="passed"    >960</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">960</td>
+
+        <td  class="passed"    >48</td>
+        <td >0</td>
+        <td class="total">48</td>
+
+        <td class="duration" data-value="5035537610">5.035</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_11_3765487683.html">CF deel 3 HH</a></td>
+
+        <td      class="passed"    >1728</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1728</td>
+
+        <td  class="passed"    >144</td>
+        <td >0</td>
+        <td class="total">144</td>
+
+        <td class="duration" data-value="15146342124">15.146</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_12_1168307342.html">CF deel 3 EH</a></td>
+
+        <td      class="passed"    >2880</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">2880</td>
+
+        <td  class="passed"    >144</td>
+        <td >0</td>
+        <td class="total">144</td>
+
+        <td class="duration" data-value="16215806180">16.215</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_13_3259929058.html">CF deel 4 HH</a></td>
+
+        <td      class="passed"    >648</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">648</td>
+
+        <td  class="passed"    >54</td>
+        <td >0</td>
+        <td class="total">54</td>
+
+        <td class="duration" data-value="5696233235">5.696</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_14_3655820175.html">CF deel 4 EH</a></td>
+
+        <td      class="passed"    >1080</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1080</td>
+
+        <td  class="passed"    >54</td>
+        <td >0</td>
+        <td class="total">54</td>
+
+        <td class="duration" data-value="5762516844">5.762</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_15_106436776.html">CH-OCTN2 TH in HH</a></td>
+
+        <td      class="passed"    >516</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">516</td>
+
+        <td  class="passed"    >54</td>
+        <td >0</td>
+        <td class="total">54</td>
+
+        <td class="duration" data-value="3836520481">3.836</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_16_653818178.html">CH-EHP/THP combi</a></td>
+
+        <td      class="passed"    >737</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">737</td>
+
+        <td  class="passed"    >55</td>
+        <td >0</td>
+        <td class="total">55</td>
+
+        <td class="duration" data-value="5220939492">5.220</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_17_3734611317.html">CH-HH-prematuur</a></td>
+
+        <td      class="passed"    >250</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">250</td>
+
+        <td  class="passed"    >25</td>
+        <td >0</td>
+        <td class="total">25</td>
+
+        <td class="duration" data-value="1865934482">1.865</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_18_3362594844.html">CH-EH-prematuur</a></td>
+
+        <td      class="passed"    >260</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">260</td>
+
+        <td  class="passed"    >26</td>
+        <td >0</td>
+        <td class="total">26</td>
+
+        <td class="duration" data-value="1917982947">1.917</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_19_1310480426.html">CH-EH/HH-niet-prematuur his</a></td>
+
+        <td      class="passed"    >3278</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3278</td>
+
+        <td  class="passed"    >298</td>
+        <td >0</td>
+        <td class="total">298</td>
+
+        <td class="duration" data-value="22445875309">22.445</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_20_2875394715.html">CH-EH/HH-niet-prematuur</a></td>
+
+        <td      class="passed"    >3552</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3552</td>
+
+        <td  class="passed"    >296</td>
+        <td >0</td>
+        <td class="total">296</td>
+
+        <td class="duration" data-value="24088030966">24.088</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_21_3512205045.html">CH-TH/THH</a></td>
+
+        <td      class="passed"    >3160</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3160</td>
+
+        <td  class="passed"    >316</td>
+        <td >0</td>
+        <td class="total">316</td>
+
+        <td class="duration" data-value="25865169438">25.865</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_22_1542905592.html">GAL his</a></td>
+
+        <td      class="passed"    >546</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">546</td>
+
+        <td  class="passed"    >78</td>
+        <td >0</td>
+        <td class="total">78</td>
+
+        <td class="duration" data-value="5559229984">5.559</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_23_2830722249.html">HbP EH</a></td>
+
+        <td      class="passed"    >280</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">280</td>
+
+        <td  class="passed"    >28</td>
+        <td >0</td>
+        <td class="total">28</td>
+
+        <td class="duration" data-value="2874987098">2.874</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_24_2376436181.html">HbP HH</a></td>
+
+        <td      class="passed"    >312</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">312</td>
+
+        <td  class="passed"    >52</td>
+        <td >0</td>
+        <td class="total">52</td>
+
+        <td class="duration" data-value="3389327027">3.389</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_25_668729276.html">HbP EH</a></td>
+
+        <td      class="passed"    >728</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">728</td>
+
+        <td  class="passed"    >104</td>
+        <td >0</td>
+        <td class="total">104</td>
+
+        <td class="duration" data-value="7291566089">7.291</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_26_1858179542.html">MPS I combi</a></td>
+
+        <td      class="passed"    >312</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">312</td>
+
+        <td  class="passed"    >30</td>
+        <td >0</td>
+        <td class="total">30</td>
+
+        <td class="duration" data-value="2721464874">2.721</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_27_938916681.html">MPS I</a></td>
+
+        <td      class="passed"    >96</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">96</td>
+
+        <td  class="passed"    >12</td>
+        <td >0</td>
+        <td class="total">12</td>
+
+        <td class="duration" data-value="759829542">0.759</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_28_2805139136.html">Combinaties van screening conclusies met TVG en BT</a></td>
+
+        <td      class="passed"    >1897</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1897</td>
+
+        <td  class="passed"    >180</td>
+        <td >0</td>
+        <td class="total">180</td>
+
+        <td class="duration" data-value="16828608473">16.828</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_29_3565411272.html">Metabole aandoeningen HH</a></td>
+
+        <td      class="passed"    >1070</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1070</td>
+
+        <td  class="passed"    >140</td>
+        <td >0</td>
+        <td class="total">140</td>
+
+        <td class="duration" data-value="10555980869">10.555</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_30_2778268137.html">Metabole aandoeningen EH</a></td>
+
+        <td      class="passed"    >1332</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">1332</td>
+
+        <td  class="passed"    >141</td>
+        <td >0</td>
+        <td class="total">141</td>
+
+        <td class="duration" data-value="9715706927">9.715</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_31_3254026215.html">OCTN2 en vrienden EH/TH + TVG + BT</a></td>
+
+        <td      class="passed"    >8138</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">8138</td>
+
+        <td  class="passed"    >670</td>
+        <td >0</td>
+        <td class="total">670</td>
+
+        <td class="duration" data-value="71751977498">1:11.751</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_32_4272628161.html">OCTN2 en vrienden HH/THH</a></td>
+
+        <td      class="passed"    >3358</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3358</td>
+
+        <td  class="passed"    >376</td>
+        <td >0</td>
+        <td class="total">376</td>
+
+        <td class="duration" data-value="31348266829">31.348</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_33_3902415952.html">OCTN2 en vrienden EH/TH</a></td>
+
+        <td      class="passed"    >3814</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">3814</td>
+
+        <td  class="passed"    >376</td>
+        <td >0</td>
+        <td class="total">376</td>
+
+        <td class="duration" data-value="31679600343">31.679</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_34_3782816136.html">SCID EH Combi</a></td>
+
+        <td      class="passed"    >960</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">960</td>
+
+        <td  class="passed"    >78</td>
+        <td >0</td>
+        <td class="total">78</td>
+
+        <td class="duration" data-value="7772459207">7.772</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_35_700843003.html">SCID EH</a></td>
+
+        <td      class="passed"    >759</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">759</td>
+
+        <td  class="passed"    >66</td>
+        <td >0</td>
+        <td class="total">66</td>
+
+        <td class="duration" data-value="4889126100">4.889</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_36_638165306.html">SMA combi TVG en BT</a></td>
+
+        <td      class="passed"    >420</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">420</td>
+
+        <td  class="passed"    >42</td>
+        <td >0</td>
+        <td class="total">42</td>
+
+        <td class="duration" data-value="3927197081">3.927</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_37_3663076525.html">SMA</a></td>
+
+        <td      class="passed"    >210</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">210</td>
+
+        <td  class="passed"    >28</td>
+        <td >0</td>
+        <td class="total">28</td>
+
+        <td class="duration" data-value="2001842341">2.001</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_38_1784513074.html">Algemene eigenschappen van hielprikgegevens</a></td>
+
+        <td      class="passed"    >373</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td >0</td>
+        <td class="total">373</td>
+
+        <td  class="passed"    >59</td>
+        <td >0</td>
+        <td class="total">59</td>
+
+        <td class="duration" data-value="430812393">0.430</td>
+        <td class="passed">Passed</td>
+      </tr>
+  </tbody>
+
+  <tfoot class="total">
+    <tr>
+      <td></td>
+      <td>51126</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>51126</td>
+
+      <td>4644</td>
+      <td>0</td>
+      <td>4644</td>
+
+      <td class="duration">6:37.117</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>100.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td>100.00%</td>
+      <td>0.00%</td>
+      <td></td>
+      <td></td>
+      <td>100.00%</td>
+    </tr>
+  </tfoot>
+</table>
+
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
